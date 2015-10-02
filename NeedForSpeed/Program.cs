@@ -16,7 +16,8 @@ namespace NeedForSpeed
     }
     class Program
     {
-        {
+        static void PrintOnPossition(int x, int y,char c, ConsoleColor color = ConsoleColor.White)
+         {
             Console.SetCursorPosition(x, y);//poziciqta na koqto pishem
             Console.ForegroundColor = color;//cveta na kolichkata e cveta, zadaden v parametrite
             Console.Write(c);
@@ -59,6 +60,7 @@ namespace NeedForSpeed
         {
             double speed = 100.0;
             int livesCount = 3;
+            int points = 0;
             int playFieledWidth = 40;// width of the play field 
             Console.BufferHeight = Console.WindowHeight = 50;
             int playFieldHeight = Console.WindowHeight; // height of the play field
@@ -66,12 +68,13 @@ namespace NeedForSpeed
             //razmera na conzolata da e kolkoto e prozoreca.Da nqma skroler
 
 
-
+            //our car
             Car userCar = new Car();
             userCar.x = (playFieldHeight / 2);
             userCar.y = Console.WindowHeight - 1;
             userCar.c = '@';
             userCar.color = ConsoleColor.Red;
+
             Random randomGenerator = new Random();
 
             List<Car> cars = new List<Car>();
@@ -103,17 +106,26 @@ namespace NeedForSpeed
                     newCar.y = oldCar.y + 1;
                     newCar.c = oldCar.c;
                     newCar.color = oldCar.color;
-                    if (newCar.y == userCar.y && newCar.x == userCar.x)//check if other cars are hitting us
+
+                    //check if we are hit
+                    if (newCar.y == userCar.y && newCar.x == userCar.x)
                     {
                         livesCount--;
                         hitted = true;
+                        //game over
                         if (livesCount <= 0)
                         {
                             PrintStringOnPossition(50, 25, "GAME OVER", ConsoleColor.Red);
                             PrintStringOnPossition(50, 29, "Pres enter to exit", ConsoleColor.Red);
                             Console.WriteLine();
-                            Environment.Exit(0);//spira izpylnenieto na programata
+                            Environment.Exit(0);//application exit
                         }
+                    }
+
+                    //adding points
+                    if (newCar.y == playFieldHeight)
+                    {
+                        points++;
                     }
                     if (newCar.y < Console.WindowHeight)
                     {
@@ -171,15 +183,17 @@ namespace NeedForSpeed
                 }
 
                 #endregion
+
                 //clear the console
                 Console.Clear();
 
-                //draw info
-
+               
+                
                 foreach (Car car in cars)
                 {
                     PrintOnPossition(car.x, car.y, car.c, car.color);
                 }
+                //when hit
                 if (hitted)
                 {
                     PrintOnPossition(userCar.x, userCar.y, 'X', ConsoleColor.Red);
@@ -189,10 +203,11 @@ namespace NeedForSpeed
                     PrintOnPossition(userCar.x, userCar.y, userCar.c, userCar.color);
                 }
 
-                PrintStringOnPossition(50, 20, "Lives: " + livesCount, ConsoleColor.Yellow);
+                //print information
+                PrintStringOnPossition(50, 20, "Lives: " + livesCount, ConsoleColor.Red);
                 PrintStringOnPossition(50, 21, "Speed: " + speed, ConsoleColor.Blue);
+                PrintStringOnPossition(50, 22, "Points: " + points, ConsoleColor.Yellow);
                 //slow down program
-
                 Thread.Sleep((int)(600 - speed)); // speed up the level according to speed
 
             }

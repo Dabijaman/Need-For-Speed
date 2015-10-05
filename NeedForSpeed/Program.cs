@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -67,6 +68,10 @@ namespace NeedForSpeed
             Console.BufferWidth = Console.WindowWidth = 70;
             //razmera na conzolata da e kolkoto e prozoreca.Da nqma skroler
 
+            using (SoundPlayer music = new SoundPlayer("../../POL-stealth-mode-short.wav"))
+            {
+                music.PlayLooping();
+            }
 
             //our car
             Car userCar = new Car();

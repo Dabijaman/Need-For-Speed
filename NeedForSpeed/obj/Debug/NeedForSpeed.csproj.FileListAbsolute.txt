@@ -4,3 +4,9 @@ c:\users\abelina\documents\visual studio 2013\Projects\NeedForSpeed\bin\Debug\Ne
 c:\users\abelina\documents\visual studio 2013\Projects\NeedForSpeed\obj\Debug\NeedForSpeed.csprojResolveAssemblyReference.cache
 c:\users\abelina\documents\visual studio 2013\Projects\NeedForSpeed\obj\Debug\NeedForSpeed.exe
 c:\users\abelina\documents\visual studio 2013\Projects\NeedForSpeed\obj\Debug\NeedForSpeed.pdb
+C:\Users\Mihail Maldzhanski\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.exe.config
+C:\Users\Mihail Maldzhanski\Desktop\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.exe
+C:\Users\Mihail Maldzhanski\Desktop\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.pdb
+C:\Users\Mihail Maldzhanski\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.exe
+C:\Users\Mihail Maldzhanski\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.pdb
+C:\Users\Mihail Maldzhanski\Desktop\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.csprojResolveAssemblyReference.cache

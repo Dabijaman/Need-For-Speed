@@ -1,0 +1,2 @@
+C:\Users\Mihail Maldzhanski\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Mihail Maldzhanski\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\ConsoleApplication1.exe

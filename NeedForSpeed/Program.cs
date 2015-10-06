@@ -71,17 +71,15 @@ namespace NeedForSpeed
             Console.BufferWidth = Console.WindowWidth = 70;
             //razmera na conzolata da e kolkoto e prozoreca.Da nqma skroler
 
-<<<<<<< HEAD
             StreamWriter fileName =new StreamWriter( @"../../log.txt",true);
             Console.WriteLine("Please Enter User Name:");
             string userName = Console.ReadLine();
             fileName.Write("{0} - ",userName);
-=======
+
             using (SoundPlayer music = new SoundPlayer("../../POL-stealth-mode-short.wav"))
             {
                 music.PlayLooping();
             }
->>>>>>> origin/master
 
             //our car
             Car userCar = new Car();

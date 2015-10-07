@@ -19,3 +19,9 @@ C:\Users\ACER\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.exe
 C:\Users\ACER\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.pdb
 C:\Users\ACER\Desktop\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.csprojResolveAssemblyReference.cache
 >>>>>>> origin/master
+C:\Users\User\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.exe.config
+C:\Users\User\Desktop\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.exe
+C:\Users\User\Desktop\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.pdb
+C:\Users\User\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.exe
+C:\Users\User\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.pdb
+C:\Users\User\Desktop\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.csprojResolveAssemblyReference.cache

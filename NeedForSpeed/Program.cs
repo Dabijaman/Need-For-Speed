@@ -6,15 +6,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
-
+using Microsoft.Win32;
 
 
 namespace NeedForSpeed
 {
-    class PlayerData
+    public class PlayerData
     {
-        public string name;
-        public int score;
+        public string Name;
+        public int Score;
     }
 
     struct Car
@@ -96,6 +96,14 @@ namespace NeedForSpeed
             userCar.c = '▲';
             userCar.color = ConsoleColor.Red;
 
+            ////player2
+            //Car playerTwoCar = new Car();
+            //playerTwoCar.x = (playFieldHeight / 2);
+            //playerTwoCar.y = Console.WindowHeight - 1;
+            //playerTwoCar.c = '▲';
+            //playerTwoCar.color = ConsoleColor.Green;
+
+
             Random randomGenerator = new Random();
 
             List<Car> cars = new List<Car>();
@@ -168,39 +176,17 @@ namespace NeedForSpeed
                                 
 
                                 List<string> info = File.ReadAllLines("../../log.txt").ToList();
-                                
-                                List<PlayerData> players = new List<PlayerData>(); 
 
-                                for (int j = 0; j < info.Count; j++)
-                                {
-                                    string[] props = info[j].Split(' ').ToArray();
-                                    players.Add(new PlayerData
-                                    {
-                                        name = props[0],
-                                        score = int.Parse(props[1])
-                                    });
-                                }
-
-                                var orderedplayers = players.OrderByDescending(x => x.score);
-
-
-
-                                List<PlayerData> orderedList = new List<PlayerData>();
-
-
-                                
-
-                               
 
                                 Console.WriteLine("HIGH SCORE: ");
-                                int line = 1;
-                                foreach (var player in players)
-                                {
-                                    
 
-                                    Console.WriteLine("{0}. {1}", line, name);
+                                int line = 0;
+                                foreach (var name in info)
+                                {
+                                    Console.WriteLine("{0}.{1}", line, name);
                                     line++;
                                 }
+                                
                                 Console.ReadKey();
                                 Environment.Exit(0);//application exit
                             }

@@ -11,12 +11,7 @@ using Microsoft.Win32;
 
 namespace NeedForSpeed
 {
-    public class PlayerData
-    {
-        public string Name;
-        public int Score;
-    }
-
+   
     struct Car
     {
         public int x;
@@ -54,9 +49,21 @@ namespace NeedForSpeed
             Console.ForegroundColor = color;
             Console.Write(str);
         }
-    
+        
         static void Main()
         {
+            
+           
+            List<string> logoList = File.ReadAllLines("../../logo.txt").ToList();
+
+            foreach (var line in logoList)
+            {
+                Console.WriteLine(line);
+            }
+
+            Console.ReadKey();
+            Console.Clear();
+
             double speed = 100.0;
             int livesCount = 3;
             int points = 0;
@@ -68,9 +75,10 @@ namespace NeedForSpeed
             int playFieldHeight = Console.WindowHeight; 
             //remove scroll of the console
             Console.BufferWidth = Console.WindowWidth = 70;
-            
+        
             //entering username
             StreamWriter fileName =new StreamWriter( @"../../log.txt",true);
+            
             Console.WriteLine("Please Enter User Name:");
             string userName = Console.ReadLine();
             fileName.Write("{0} - ",userName);
@@ -193,12 +201,12 @@ namespace NeedForSpeed
                 }
                 cars = newCarsList;
 #region Movement
-                if (Console.KeyAvailable)// Poneje ReadKey e chakashta operaciq, i za da ne se dvijat vs koli, samo kogato dvijim nashata
+                if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo pressedKey = Console.ReadKey(true);
                     while (Console.KeyAvailable)
                     {
-                        Console.ReadKey(true); //buferira vs klavishi za da ne zabavq kogato zadyrjim nqkoi
+                        Console.ReadKey(true); 
                     }
                     // moving to the left
                     if (pressedKey.Key == ConsoleKey.LeftArrow)

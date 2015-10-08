@@ -25,3 +25,9 @@ C:\Users\User\Desktop\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.pdb
 C:\Users\User\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.exe
 C:\Users\User\Desktop\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.pdb
 C:\Users\User\Desktop\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.csprojResolveAssemblyReference.cache
+C:\Users\abelina\Desktop\NeedForSpeed\Game\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.exe.config
+C:\Users\abelina\Desktop\NeedForSpeed\Game\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.exe
+C:\Users\abelina\Desktop\NeedForSpeed\Game\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.pdb
+C:\Users\abelina\Desktop\NeedForSpeed\Game\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.exe
+C:\Users\abelina\Desktop\NeedForSpeed\Game\Need-For-Speed\NeedForSpeed\bin\Debug\NeedForSpeed.pdb
+C:\Users\abelina\Desktop\NeedForSpeed\Game\Need-For-Speed\NeedForSpeed\obj\Debug\NeedForSpeed.csprojResolveAssemblyReference.cache

@@ -27,58 +27,49 @@ namespace NeedForSpeed
     }
     class Program
     {
+        /// <summary>
+        /// Print char on a selected position
+        /// </summary>
+        /// <param name="x">horizontal coordinate</param>
+        /// <param name="y">vertical coordinate</param>
+        /// <param name="c">symbol</param>
+        /// <param name="color">color</param>
         static void PrintOnPossition(int x, int y,char c, ConsoleColor color = ConsoleColor.White)
          {
-            Console.SetCursorPosition(x, y);//draw position
-            Console.ForegroundColor = color;//cveta na kolichkata e cveta, zadaden v parametrite
+            Console.SetCursorPosition(x, y);
+            Console.ForegroundColor = color;
             Console.Write(c);
-            //PrintCars(x,y);//slagame kolichka na tazi poziciq
         }
 
-        //print text
+        /// <summary>
+        /// Print text on selected position
+        /// </summary>
+        /// <param name="x">horizontal coordinate</param>
+        /// <param name="y">vertical coordinate</param>
+        /// <param name="str">string we want to print</param>
+        /// <param name="color">color of the string</param>
         static void PrintStringOnPossition(int x, int y, string str, ConsoleColor color = ConsoleColor.White)
         {
             Console.SetCursorPosition(x, y);
             Console.ForegroundColor = color;
             Console.Write(str);
         }
-        //static string PrintCars(int x, int y)
-        //{
-        //char[,] cars = new char[3, 2];
-        //cars[0, 0] = '*';
-        //cars[0, 1] = '*';
-        //cars[1, 0] = '.';
-        //cars[1, 1] = '.';
-        //cars[2, 0] = '*';
-        //cars[2, 1] = '*';
-
-        //for (int i = 0; i < cars.GetLength(0); i++)
-        //{
-        //    for (int n = 0; n < cars.GetLength(1); n++)
-        //    {
-        //        Console.Write(cars[i, n]);
-        //    }
-        //    Console.WriteLine();
-        //}
-        //    string cars = new string('*', 2);
-        //    string cars2 = new string('.', 2); 
-        //    new string('*', 2);
-        //    Console.WriteLine(cars);
-        //    return cars;
-        //}
-
+    
         static void Main()
         {
             double speed = 100.0;
             int livesCount = 3;
             int points = 0;
             int counter = 0;
-            int playFieledWidth = 40;// width of the play field 
+            // width of the play field 
+            int playFieledWidth = 40;
             Console.BufferHeight = Console.WindowHeight = 50;
-            int playFieldHeight = Console.WindowHeight; // height of the play field
+            // height of the play field
+            int playFieldHeight = Console.WindowHeight; 
+            //remove scroll of the console
             Console.BufferWidth = Console.WindowWidth = 70;
-            //razmera na conzolata da e kolkoto e prozoreca.Da nqma skroler
-
+            
+            //entering username
             StreamWriter fileName =new StreamWriter( @"../../log.txt",true);
             Console.WriteLine("Please Enter User Name:");
             string userName = Console.ReadLine();
@@ -89,24 +80,17 @@ namespace NeedForSpeed
                 music.PlayLooping();
             }
 #endregion
-            //our car
+            //user car
             Car userCar = new Car();
             userCar.x = (playFieldHeight / 2);
             userCar.y = Console.WindowHeight - 1;
             userCar.c = '▲';
             userCar.color = ConsoleColor.Red;
 
-            ////player2
-            //Car playerTwoCar = new Car();
-            //playerTwoCar.x = (playFieldHeight / 2);
-            //playerTwoCar.y = Console.WindowHeight - 1;
-            //playerTwoCar.c = '▲';
-            //playerTwoCar.color = ConsoleColor.Green;
-
-
-            Random randomGenerator = new Random();
+            Random randomGenerator = new Random(); //for the cars
 
             List<Car> cars = new List<Car>();
+
             while (true)
             {
                 bool hitted = false;
@@ -117,29 +101,32 @@ namespace NeedForSpeed
                 }
 
                 {
-                    Car newCar = new Car();//vseki pyt da syzdava nova kolichka
+                    //on every loop creates a new car
+                    Car newCar = new Car();
                     newCar.color = ConsoleColor.White;
                     newCar.x = randomGenerator.Next(0, playFieledWidth);
                     newCar.y = 0;
-                    newCar.c = 'V';
+                    newCar.c = '▼';
                     cars.Add(newCar);
                     counter++;
                 }
                 {
-                    if (counter >= 10)
+                    //for every 20 cars 1 live
+                    if (counter >= 20) 
                     {
                         counter = 0;
-                        Car liveCar = new Car();//vseki pyt da syzdava nova kolichka
-                        liveCar.color = ConsoleColor.Green;
+                        Car liveCar = new Car();
+                        liveCar.color = ConsoleColor.Red;
                         liveCar.x = randomGenerator.Next(0, playFieledWidth);
                         liveCar.y = 0;
-                        liveCar.c = '+';
+                        liveCar.c = '♥';
                         cars.Add(liveCar);
                     }
                 }
                 //move cars
                 List<Car> newCarsList = new List<Car>();
-                for (int i = 0; i < cars.Count; i++)//for zashtoto foreach ne ni dava da promenqme stoinosti, a samo da gi chetem
+
+                for (int i = 0; i < cars.Count; i++)
                 {
                     Car oldCar = cars[i];
                     Car newCar = new Car();
@@ -149,12 +136,12 @@ namespace NeedForSpeed
                     newCar.color = oldCar.color;
 
                     //check for Lives
-                    if (newCar.y == userCar.y && newCar.x == userCar.x && newCar.c == '+')
+                    if (newCar.y == userCar.y && newCar.x == userCar.x && newCar.c == '♥')
                     {
                         livesCount++;
                         hitted = true;
                     }
-                    //check if we are hitted by rock
+                    //check if we are hit by car
                     else
                     {
                         if (newCar.y == userCar.y && newCar.x == userCar.x)
@@ -168,10 +155,10 @@ namespace NeedForSpeed
                                 fileName.WriteLine();
                                 fileName.Close();
                                 PrintStringOnPossition(50, 25, "GAME OVER", ConsoleColor.Red);
-                                PrintStringOnPossition(50, 29, "Pres enter to exit", ConsoleColor.Red);
+                                PrintStringOnPossition(50, 29, "Press enter to exit", ConsoleColor.Red);
                                 
-                                //show info after game
-
+//show info after game
+#region InfoAfterGame
                                 Console.Clear();
                                 
 
@@ -188,11 +175,12 @@ namespace NeedForSpeed
                                 }
                                 
                                 Console.ReadKey();
-                                Environment.Exit(0);//application exit
+#endregion
+                                Environment.Exit(0);// Exit
                             }
                         }
                     }       
-                    //adding points
+               //adding points
                     if (newCar.y == playFieldHeight)
                     {
                         points++;
@@ -204,7 +192,7 @@ namespace NeedForSpeed
 
                 }
                 cars = newCarsList;
-                #region Movement //car movement(key pressed)
+#region Movement
                 if (Console.KeyAvailable)// Poneje ReadKey e chakashta operaciq, i za da ne se dvijat vs koli, samo kogato dvijim nashata
                 {
                     ConsoleKeyInfo pressedKey = Console.ReadKey(true);
@@ -247,7 +235,7 @@ namespace NeedForSpeed
                     //speed up
                     else if (pressedKey.Key == ConsoleKey.Spacebar)
                     {
-                        speed += 10;
+                        speed += 15;
                     }
                 }
 
@@ -255,8 +243,6 @@ namespace NeedForSpeed
 
                 //clear the console
                 Console.Clear();
-
-
 
                 foreach (Car car in cars)
                 {
@@ -272,10 +258,11 @@ namespace NeedForSpeed
                     PrintOnPossition(userCar.x, userCar.y, userCar.c, userCar.color);
                 }
 
-                //print information
+                //print additional information
                 PrintStringOnPossition(50, 20, "Lives: " + livesCount, ConsoleColor.Red);
                 PrintStringOnPossition(50, 21, "Speed: " + speed, ConsoleColor.Blue);
                 PrintStringOnPossition(50, 22, "Points: " + points, ConsoleColor.Yellow);
+
                 //slow down program
                 Thread.Sleep((int)(600 - speed)); // speed up the level according to speed
             }

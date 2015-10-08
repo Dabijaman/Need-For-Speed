@@ -7,8 +7,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
 
+
+
 namespace NeedForSpeed
 {
+    class PlayerData
+    {
+        public string name;
+        public int score;
+    }
+
     struct Car
     {
         public int x;
@@ -21,7 +29,7 @@ namespace NeedForSpeed
     {
         static void PrintOnPossition(int x, int y,char c, ConsoleColor color = ConsoleColor.White)
          {
-            Console.SetCursorPosition(x, y);//poziciqta na koqto pishem
+            Console.SetCursorPosition(x, y);//draw position
             Console.ForegroundColor = color;//cveta na kolichkata e cveta, zadaden v parametrite
             Console.Write(c);
             //PrintCars(x,y);//slagame kolichka na tazi poziciq
@@ -75,17 +83,17 @@ namespace NeedForSpeed
             Console.WriteLine("Please Enter User Name:");
             string userName = Console.ReadLine();
             fileName.Write("{0} - ",userName);
-
+#region music
             using (SoundPlayer music = new SoundPlayer("../../POL-stealth-mode-short.wav"))
             {
                 music.PlayLooping();
             }
-
+#endregion
             //our car
             Car userCar = new Car();
             userCar.x = (playFieldHeight / 2);
             userCar.y = Console.WindowHeight - 1;
-            userCar.c = '@';
+            userCar.c = '▲';
             userCar.color = ConsoleColor.Red;
 
             Random randomGenerator = new Random();
@@ -145,7 +153,7 @@ namespace NeedForSpeed
                         {
                             livesCount--;
                             hitted = true;
-                            //game over
+                  //game over
                             if (livesCount <= 0)
                             {
                                 fileName.Write(points);
@@ -153,6 +161,46 @@ namespace NeedForSpeed
                                 fileName.Close();
                                 PrintStringOnPossition(50, 25, "GAME OVER", ConsoleColor.Red);
                                 PrintStringOnPossition(50, 29, "Pres enter to exit", ConsoleColor.Red);
+                                
+                                //show info after game
+
+                                Console.Clear();
+                                
+
+                                List<string> info = File.ReadAllLines("../../log.txt").ToList();
+                                
+                                List<PlayerData> players = new List<PlayerData>(); 
+
+                                for (int j = 0; j < info.Count; j++)
+                                {
+                                    string[] props = info[j].Split(' ').ToArray();
+                                    players.Add(new PlayerData
+                                    {
+                                        name = props[0],
+                                        score = int.Parse(props[1])
+                                    });
+                                }
+
+                                var orderedplayers = players.OrderByDescending(x => x.score);
+
+
+
+                                List<PlayerData> orderedList = new List<PlayerData>();
+
+
+                                
+
+                               
+
+                                Console.WriteLine("HIGH SCORE: ");
+                                int line = 1;
+                                foreach (var player in players)
+                                {
+                                    
+
+                                    Console.WriteLine("{0}. {1}", line, name);
+                                    line++;
+                                }
                                 Console.ReadKey();
                                 Environment.Exit(0);//application exit
                             }
